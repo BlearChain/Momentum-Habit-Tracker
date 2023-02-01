@@ -1,2 +1,2 @@
 # Momentum-Habit-Tracker
-OoO with Python or IU
+OoO with Python for IU
