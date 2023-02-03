@@ -1,0 +1,22 @@
+[
+    {
+        "label": "Tomar agua",
+        "periodicity": "DAILY"
+    },
+    {
+        "label": "Correr 2km",
+        "periodicity": "DAILY"
+    },
+    {
+        "label": "Comer fruta",
+        "periodicity": "DAILY"
+    },
+    {
+        "label": "Visitar abuelos",
+        "periodicity": "MONTHLY"
+    },
+    {
+        "label": "Agua a las plantas",
+        "periodicity": "WEEKLY"
+    }
+]

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Habit</th>
+      <th scope="col">Current Streak</th>
+      <th scope="col">Best Streak</th>
+      <th scope="col">Worst Streak</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    {% for streak in Habit_streaks %}
+    <tr>
+      <th scope="row">{{streak.label}}</th>
+      <td style="text-align: center;">{{streak.current_streak}}</td>
+      <td style="text-align: center;">{{streak.max_streak}}</td>
+      <td style="text-align: center;">{{streak.worst_streak}}</td>
+    </tr>
+    {% endfor %}
+  
+  </tbody>
+</table>
+{% endblock %}

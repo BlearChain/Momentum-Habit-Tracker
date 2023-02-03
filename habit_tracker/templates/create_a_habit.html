@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+   <div class="container">
+        <h2> Create a New Habit </h2>
+        <form action = "" method = "POST" style = "width: 600px;">
+            {% csrf_token %}
+            {{form}}
+            
+            <input type = "submit" class = "btn btn-primary" value="Create habit" onclick="compareDates()" >
+        </form>
+
+        <br><br>
+        <form  action = "/create-common"  method="POST">
+          {% csrf_token %}
+          <input type="hidden" value="1">
+          <button id="common" value="create_common_habits">Create Commmon Habits</button>
+        
+        </form>
+        <span class="result"></span>
+  </div>
+
+   {% block jquery %}
+   
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $("#common").click (function () {
+            $.post( "/create-common", function( data ) {
+                $( ".result" ).html( data );
+              });
+        })
+        })
+    </script> 
+   
+   {% endblock %}
+  
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOMENTUM Habit Tracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <h1>MOMENTUM HABIT TRACKER</h1>
+        <h3> Your Habit tracking App<h3>
+
+    <a href="{% url 'show_habits'  %}"> <button class = "btn btn-primary">View All My Habits</button> </a>
+    <a href="{% url 'monthly_habits'  %}"> <button class = "btn btn-primary">My Monthly Habits</button> </a>
+    <a href="{% url 'weekly_habits'  %}"> <button class = "btn btn-primary">My Weekly Habits</button> </a>
+    <a href="{% url 'daily_habits'  %}"> <button class = "btn btn-primary">My Daily Habits</button> </a>
+    <a href="{% url 'All_Streaks'  %}"> <button class = "btn btn-primary">My Habit Streaks</button> </a>
+    <a href="{% url 'create_a_habit'  %}"> <button class = "btn btn-primary">Create A New Habit</button> </a>
+    <input type=button value="Previous Page" onClick="javascript:history.go(-1);">
+
+    </div>
+    <div class="container" style="margin-top : 5px;margin-bottom:10px;">
+        {% block  content %}     
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h3> Your current Streak is </h3>
+
+<h3>{% if streak.current_streak != 0 %} {{ streak.max_streak }} for the {{habit.label}} {% else %} <h3>No Streak</h3>  {% endif %}</h3>
+
+<h3> Your current Worst Streaks </h3>
+
+<h3>{% if streak.worst_streak != 0 %} {{ streak.worst_streak }} for the {{habit.label}} {% else %} <h3>No Streak</h3> {% endif %}</h3>
+
+{% endblock %}

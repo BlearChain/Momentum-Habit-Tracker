@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+ 
+      <th scope="col">Done</th>
+      <th scope="col">Task Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in tasks %}
+    <tr>
+
+        <td>{{task.taskcomplete}}  <input type="checkbox" name="task"  {% if task.taskcomplete %} checked {% endif %}></td>
+        <td>{{task.task_date}}</td>
+        <td class = "d-flex flex-row justify-content-around">
+        <a href = "{% url 'update_task' task.id %}"  ><button class = "btn btn-primary"> Complete Task </button></a>
+    </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
