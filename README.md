@@ -3,6 +3,10 @@ OoO with Python and Django for IU Project portafolio
 
 # Setup
 
+Installing inside virtualenv is recommended, however you can start your project without virtualenv too.
+I used Anaconda that is an open-source distribution of the Python and R programming languages for data science that aims to simplify package management and deployment. you can download it from [this link](https://www.anaconda.com/products/distribution) as it created this virtualenv for you.
+Here are the steps for regular use, not with a virtualenv:
+
 Initially you must clone this repository:
 
 ```sh
@@ -22,10 +26,10 @@ Once `pip` has finished downloading the dependencies:
 cd project
 python manage.py runserver
 ```
-And navigate to `http://127.0.0.1:8000/show_habits`.
-![Main_page](https://github.com/BlearChain/Momentum-Habit-Tracker/blob/main/__screenshots/View%20all%20habits.jpg?raw=true)
 
-Installing inside virtualenv is recommended, however you can start your project without virtualenv too.
+And navigate to `http://127.0.0.1:8000/show_habits`.
+
+![Main_page](https://github.com/BlearChain/Momentum-Habit-Tracker/blob/main/__screenshots/View%20all%20habits.jpg?raw=true)
 
 ## Habit Tracker's Core Functionality
 The Momentum habit tracker web app basically allows you to:
@@ -33,6 +37,8 @@ The Momentum habit tracker web app basically allows you to:
 * Add a new habit 
 * Delete a current habit in the app
 * Define and edit the periodicity of habits (Daily, weekly, and monthly)
+
+
 * Mark your habit ans its tasks as completed
 
 ### Progress and Streak Tracker
