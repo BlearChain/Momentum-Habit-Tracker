@@ -1,5 +1,7 @@
 # Momentum-Habit-Tracker
-OoO with Python and Django for IU Project portafolio
+by Miguel Escobar
+
+OoO web app using Python and Django for IU Project portafolio
 
 # Setup
 
