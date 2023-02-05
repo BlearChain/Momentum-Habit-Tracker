@@ -2,11 +2,11 @@
 {% block content %}
    <div class="container">
         <h2> Create a New Habit </h2>
-        <form action = "" method = "POST" style = "width: 600px;">
+        <form action = "" method = "POST" style = "width: 900px;">
             {% csrf_token %}
             {{form}}
             
-            <input type = "submit" class = "btn btn-primary" value="Create habit" onclick="compareDates()" >
+            <input type = "submit" class = "btn btn-primary" value="Create habit" >
         </form>
 
         <br><br>
