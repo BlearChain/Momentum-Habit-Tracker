@@ -23,7 +23,7 @@ cd project
 python manage.py runserver
 ```
 And navigate to `http://127.0.0.1:8000/show_habits`.
-[https://github.com/BlearChain/Momentum-Habit-Tracker/blob/main/__screenshots/View%20all%20habits.jpg?raw=true)]
+![Main_page](https://github.com/BlearChain/Momentum-Habit-Tracker/blob/main/__screenshots/View%20all%20habits.jpg?raw=true)
 
 Installing inside virtualenv is recommended, however you can start your project without virtualenv too.
 
