@@ -55,6 +55,7 @@ Here is an screenshot of the create a habit page looks like:
 and you can complete the new habit creation process by clicking on the `Create habit` button.
 
 To complete your tasks, you need to click on the `Show tasks` button that each habit has on the habits screen. This leads you to another screen where you can see all the current tasks that you have for this current habit in accordance to the selected periodicity for that habit. and if this task has been completed or not bt tw means: uno with a False or True test in the Done column and a check mark, that does confirm if the task is completed or not.
+
 ![tasks](https://github.com/BlearChain/Momentum-Habit-Tracker/blob/main/__screenshots/Tasks.jpg?raw=true)
 
 to complete a task, you must click on the `Complete Task` button you see next to each task, this will lead you to the following screen:
