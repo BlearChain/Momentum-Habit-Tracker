@@ -68,6 +68,6 @@ To see your current streaks for any of your habits, you have to click on the `My
 
 ![Streaks](https://github.com/BlearChain/Momentum-Habit-Tracker/blob/main/__screenshots/Habit%20Streaks.jpg?raw=true)
 
-On this last pagem, you can see the current, best and worst streak you have for any of your current habits up to today.
+On this last page, you can see the current, best and worst streak you have for any of your current habits up to today.
 
 
