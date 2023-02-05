@@ -5,13 +5,15 @@ OoO with Python and Django for IU Project portafolio
 
 Installing inside virtualenv is recommended, however you can start your project without virtualenv too.
 I used Anaconda that is an open-source distribution of the Python and R programming languages for data science that aims to simplify package management and deployment. you can download it from [this link](https://www.anaconda.com/products/distribution) as it created this virtualenv for you.
-Here are the steps for regular use, not with a virtualenv:
+
+
+Here are the steps for regular use without a virtualenv:
 
 Initially you must clone this repository:
 
 ```sh
 git clone https://github.com/BlearChain/Momentum-Habit-Tracker.git
-cd "to the folder where it was stored"
+cd Momentum-Habit-Tracker
 ```
 
 to use the app, you must install Pyhton ver 3.10 or superior.
@@ -31,20 +33,23 @@ And navigate to `http://127.0.0.1:8000/show_habits`.
 
 ![Main_page](https://github.com/BlearChain/Momentum-Habit-Tracker/blob/main/__screenshots/View%20all%20habits.jpg?raw=true)
 
-## Habit Tracker's Core Functionality
+## Mmomentum Habit Tracker's Core Functionality
 The Momentum habit tracker web app basically allows you to:
 * View you current habits (5 can be preloaded as predefined ones)
-* Add a new habit 
+* Add a new habit
 * Delete a current habit in the app
 * Define and edit the periodicity of habits (Daily, weekly, and monthly)
+* 
+![Create a new habit](https://github.com/BlearChain/Momentum-Habit-Tracker/blob/main/__screenshots/Create%20a%20new%20habit.jpg?raw=true)
 
+* Mark your habit and its tasks as completed
 
-* Mark your habit ans its tasks as completed
+![task complete](https://github.com/BlearChain/Momentum-Habit-Tracker/blob/main/__screenshots/complete%20task.jpg?raw=true)
 
-### Progress and Streak Tracker
-Additionally, the user can view:
-* View all of their current habits
-* View all the habits for a specific period (Monthly, Weekly or Daily)
+### Task Streak Tracker
+here you can view the following information:
+* View all of current habits streaks
+* View all the streaks for a specific period (Monthly, Weekly or Daily)
 * View the current, best and worst streaks of all habits
 
 
