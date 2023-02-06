@@ -205,12 +205,12 @@ class All_Streaks(View):
     It then iterates through each task in tasks and formats its date as a string in the format '%Y-%m-%d'.
     If this formatted date is earlier than or equal to the current date, it checks if the task is complete and adds 1 to amount_tasks 
     if it is or 0 if it isn't. The datetask variable is then incremented by step depending on periodicity. 
-    For each item in amounttasks, if it is 1 (the task was completed), it increments habit's current streak by 1 
+    For each item in amount_tasks, if it is 1 (the task was completed), it increments habit's current streak by 1 
     and checks if this value is greater than or equal to its max streak; if so, max streak is set to current streak.
     The counter for worst streak is reset to 0. If item is 0 (the task was not completed), counter for worst streak 
     is incremented by 1 and checked against habit's worst streak; if greater than worst streak, worst streak is set to counter's
     value and current streak set back to 0. The updated habit object is saved and appended to habitstreaks list. 
-    Finally, context dictionary containing Habitstreaks list is passed into AllStreaks template which renders
+    Finally, context dictionary containing Habit_streaks list is passed into AllStreaks template which renders
     all streaks associated with each habit in HTML format.
     """
     def get(self, request):
@@ -263,12 +263,12 @@ class All_Streaks(View):
 class Task_Streaks(View):
     """
     This class defines a view for calculating the maximum task streak for a given habit. It contains four methods: 
-    formatedtasks() - takes in a list of tasks and returns a list of 1s and 0s based on whether the task is complete or not. 
-    amounttasks() - takes in an iterable item and returns the sum of all items in it. 
+    formated_tasks() - takes in a list of tasks and returns a list of 1s and 0s based on whether the task is complete or not. 
+    amount_tasks() - takes in an iterable item and returns the sum of all items in it. 
     get() - takes in a request and primary key (pk) for the habit, filters out all tasks associated with that habit,
-    formats them using formatedtasks(), calculates the maximum streak using beststreak(),
+    formats them using formated_tasks(), calculates the maximum streak using best_streak(),
     and renders it to the streak.html template with context containing maxstreak. 
-    beststreak() - takes in data and returns the maximum number of consecutive tasks if there are any completed tasks
+    best_streak() - takes in data and returns the maximum number of consecutive tasks if there are any completed tasks
     that are dated today or earlier. Otherwise, it returns 0.
 
     """
