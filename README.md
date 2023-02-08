@@ -25,7 +25,7 @@ pip install python
 Once `pip` has finished downloading the dependencies:
 
 ```sh
-cd Momentum-Habit-Tracker
+cd Habit_Tracker
 python manage.py runserver
 ```
 And navigate to `http://127.0.0.1:8000/show_habits`.
