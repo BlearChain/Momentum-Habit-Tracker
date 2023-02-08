@@ -1,60 +1,80 @@
-from django.test import TestCase
 from habit_tracker.models import ModelHabit, ModelTask
 import datetime as dt
-from itertools import groupby
+import unittest
+from django.test import Client
 
 
-class TestClass(TestCase):
 
-    def test_habit_model(self):
-        model = ModelHabit.objects.create(label="Run", begin_date=dt.datetime.now(),
-                                          end_date=dt.datetime.now())
+class TestClass(unittest.TestCase):
 
-        self.assertEquals("Run", str(model))
+    def test_model_habit(self):
+        model = ModelHabit.objects.create(label="Run 10km a week", begin_date='2023-01-01',
+                                          end_date='2023-03-01')
 
-    def test_task_model(self):
-        habit = ModelHabit.objects.create(label="Run twice", begin_date=dt.datetime.now(),
-                                          end_date=dt.datetime.now())
+        self.assertEquals("Run 10km a week", str(model))
 
-        model = ModelTask.objects.create(done=True, task_date=dt.datetime.now(), habit=habit)
+    def test_model_task(self):
+        habit = ModelHabit.objects.create(label="Run twice", periodicity='DAILY', begin_date='2023-02-01',
+                                          end_date='2023-02-30')
 
-        self.assertEquals(True, model.done)
+        model = ModelTask.objects.create(taskcomplete=True, task_date='2023-02-07', habit=habit)
 
-    def test_streak_number(self):
+        self.assertEquals(True, model.taskcomplete)
 
-        habit = ModelHabit.objects.create(label="Run three times", begin_date=dt.datetime.now(),
-                                          end_date=dt.datetime.now())
+    def test_streak(self):
 
-        ModelTask.objects.create(taskcomplete=True, task_date=dt.datetime.now(), habit=habit)
-        ModelTask.objects.create(taskcomplete=True, task_date=dt.datetime.now(), habit=habit)
-        ModelTask.objects.create(taskcomplete=True, task_date=dt.datetime.now(), habit=habit)
+        habit = ModelHabit.objects.create(label="Drink more water", periodicity='DAILY', begin_date='2023-02-01',
+                                          end_date='2023-02-20' )
+
+        ModelTask.objects.create(taskcomplete=True, task_date='2023-02-01', habit=habit)
+        ModelTask.objects.create(taskcomplete=True, task_date='2023-02-02', habit=habit)
+        ModelTask.objects.create(taskcomplete=True, task_date='2023-02-03', habit=habit)
+        ModelTask.objects.create(taskcomplete=True, task_date='2023-02-04', habit=habit)
 
         habit = ModelHabit.objects.filter(id=habit.id)
         tasks = ModelTask.objects.filter(habit=habit[0])
+        tasks = ModelTask.objects.filter(habit=habit)  
+        testdate="2023-02-07"
+        amount_tasks = []
+        step = dt.timedelta(days=1)
+        for task in tasks:
+            datetask= task.task_date
+            formated_datetask = dt.datetime.strftime(datetask,'%Y-%m-%d')
+            if testdate >= formated_datetask: 
+                if task.taskcomplete:
+                    amount_tasks.append(1)
+                    datetask += step
+                else:
+                    amount_tasks.append(0)
+                    datetask += step    
+                for item_amount in amount_tasks:
+                    if item_amount == 1:
+                        habit.current_streak += 1
+                        if habit.current_streak >= habit.max_streak:
+                            habit.max_streak = habit.current_streak                
+                        counter_worst_streak = 0
+                    else:
+                        counter_worst_streak += 1
+                        if counter_worst_streak > habit.worst_streak:
+                            habit.worst_streak = counter_worst_streak
+                        habit.current_streak = 0
+        
+        max_streak = habit.max_streak
+        worst_streak=habit.worst_streak
 
-        number_tasks = number_formatted(tasks)
+        self.assertEquals(4, max_streak)
+        self.assertEquals(3, worst_streak)
 
-        def best_streak(data) -> int:
-            if number_tasks.__contains__(1):
-                return max(len_iter(run) for val, run in groupby(data) if val)
-            else:
-                return 0
+  
+class TrackingRecordModelTestCase(unittest.TestCase):
+    def setUp(self):
+        habit = ModelHabit.objects.create(label='Meditate')
+        habit.objects.create(habit=habit, begin_date='2023-01-01')
+        habit.objects.create(habit=habit, end_date='2023-01-02')
 
-        max_streak = best_streak(number_tasks)
-
-        self.assertEquals(3, max_streak)
-
-
-def number_formatted(tasks):
-    number_tasks = []
-
-    for task in tasks:
-        if task.done:
-            number_tasks.append(1)
-        else:
-            number_tasks.append(0)
-    return number_tasks
-
-
-def len_iter(items):
-    return sum(1 for _ in items)
+    def test_records_are_created(self):
+        habit = ModelHabit.objects.get(label='Meditate')
+        record1 = ModelTask.objects.get(habit=habit, task_date='2023-01-01')
+        record2 = ModelTask.objects.get(habit=habit, task_date='2023-01-02')
+        self.assertEqual(record1.habit, habit)
+        self.assertEqual(record2.habit, habit)
